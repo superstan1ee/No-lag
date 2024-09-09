@@ -1,0 +1,20 @@
+-- Disable unnecessary physics calculations
+local function optimizeParts()
+    for _, part in pairs(workspace:GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.CanCollide = false
+            part.CanTouch = false
+            part.CanQuery = false
+            part.Anchored = true
+            part.CastShadow = false
+        end
+    end
+end
+
+-- Call the function to optimize parts
+optimizeParts()
+
+-- Optimize lighting settings
+local lighting = game:GetService("Lighting")
+lighting.GlobalShadows = false
+lighting.Technology = Enum.Technology.Voxel
